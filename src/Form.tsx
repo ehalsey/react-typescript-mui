@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 export default function Form() {
 
