@@ -5,9 +5,9 @@ import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@m
 export default function Form() {
 
     const [age, setAge] = React.useState("20");
-    const onChange = (e: SelectChangeEvent<unknown>) => {
-        console.log(e.target.value);
-        setAge(e.target.value as string);
+    const onChange = (value:string) => {
+        console.log(value);
+        setAge(value);
       }
 
     interface SelectProps {
@@ -32,7 +32,7 @@ export default function Form() {
             id="demo-simple-select"
             value={age}
             label="Age"
-            onChange={(event:SelectChangeEvent<unknown>) => onChange(event)}
+            onChange={event=>onChange(event.target.value as string)}
         >
             <MenuItem value={"10"}>Ten</MenuItem>
             <MenuItem value={"20"}>Twenty</MenuItem>
