@@ -4,43 +4,39 @@ import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@m
 
 export default function Form() {
 
-    const [age, setAge] = React.useState(0);
-    const handleChange = (event: SelectChangeEvent<number>) => {
-        setAge(event.target.value.valueOf() as number);
-    };
+    const [age, setAge] = React.useState(20);
+    const onChange = (e: any) => {
+        console.log(e.target.value);
+      }
 
     interface SelectProps {
         label: string;
         labelId: string;
         id: string;
         value: number;
-        onChange: (e: SelectChangeEvent<number>) => void;
     }
 
-    const styledSelect = styled('select')<SelectProps>(({ labelId,id,value,label,onChange }) => ({
+    const StyledSelect = styled(Select)<SelectProps>(({ labelId, id, value, label }) => ({
         height: '36px',
         border: '1px solid rgba(34, 27, 78, 0.5)',
         color: '#000000',
         borderRadius: '8px',
         paddingLeft: '16px',
-        onChange: onChange
-      }));
+    }));
 
-    const temp = <FormControl fullWidth>
-    <InputLabel id="demo-simple-select-label">Age</InputLabel>
-    <Select
-      labelId="demo-simple-select-label"
-      id="demo-simple-select"
-      value={age}
-      label="Age"
-      onChange={handleChange}
-    >
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
-    </Select>
-  </FormControl>
-
-    return (<div></div>)
+    return (<FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <StyledSelect
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={age}
+            label="Age"
+            onChange={onChange}
+        >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+        </StyledSelect>
+    </FormControl>)
 }
 
