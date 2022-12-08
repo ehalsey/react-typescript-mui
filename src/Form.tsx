@@ -4,16 +4,17 @@ import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@m
 
 export default function Form() {
 
-    const [age, setAge] = React.useState(20);
-    const onChange = (e: any) => {
+    const [age, setAge] = React.useState("20");
+    const onChange = (e: SelectChangeEvent<unknown>) => {
         console.log(e.target.value);
+        setAge(e.target.value as string);
       }
 
     interface SelectProps {
         label: string;
         labelId: string;
         id: string;
-        value: number;
+        value: string;
     }
 
     const StyledSelect = styled(Select)<SelectProps>(({ labelId, id, value, label }) => ({
@@ -31,11 +32,11 @@ export default function Form() {
             id="demo-simple-select"
             value={age}
             label="Age"
-            onChange={onChange}
+            onChange={(event:SelectChangeEvent<unknown>) => onChange(event)}
         >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={"10"}>Ten</MenuItem>
+            <MenuItem value={"20"}>Twenty</MenuItem>
+            <MenuItem value={"30"}>Thirty</MenuItem>
         </StyledSelect>
     </FormControl>)
 }
