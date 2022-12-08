@@ -14,7 +14,7 @@ export default function BasicUsage() {
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log(e.target.value);
   }
-  const [age, setAge] = React.useState(0);
+  const [age, setAge] = React.useState(10);
   
   return <><MyComponent onChange={() => console.log("here1")}>
     <option>one</option>
