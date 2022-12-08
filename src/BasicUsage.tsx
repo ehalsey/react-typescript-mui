@@ -16,7 +16,7 @@ export default function BasicUsage() {
   }
   const [age, setAge] = React.useState(10);
   
-  return <><MyComponent onChange={() => console.log("here1")}>
+  return <><MyComponent onChange={onChange}>
     <option>one</option>
     <option>two</option>
     <option>three</option>
