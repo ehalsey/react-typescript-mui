@@ -13,8 +13,13 @@ export default function Form() {
         setAge(value);
     }
 
-    const confirmClear = () => {
+    const handleClear = () => {
         setConfirmDialogShown(!confirmDialogShown);
+    }
+
+    const handleConfirmDialogClose = (status: boolean) => {
+        console.log(status);
+        setConfirmDialogShown(false);
     }
     interface SelectProps {
         label: string;
@@ -44,8 +49,8 @@ export default function Form() {
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
         </StyledSelect>
-        <Button onClick={() => confirmClear()}>Clear Form</Button>
-        <DialogConfirm visible={confirmDialogShown} title="Clear Form" message="Are you sure you want to clear the form?" onClose={(status) => { }} />
+        <Button onClick={handleClear}>Clear Form</Button>
+        <DialogConfirm visible={confirmDialogShown} title="Clear Form" message="Are you sure you want to clear the form?" onClose={(status) => {handleConfirmDialogClose(status) }} />
     </FormControl>)
 }
 
