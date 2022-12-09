@@ -1,15 +1,21 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
+import DialogConfirm from './dialog'
 
 export default function Form() {
 
     const [age, setAge] = React.useState(20);
-    const onChange = (value:number) => {
+    const [confirmDialogShown, setConfirmDialogShown] = React.useState(false);
+
+    const onChange = (value: number) => {
         console.log(value);
         setAge(value);
-      }
+    }
 
+    const confirmClear = () => {
+        setConfirmDialogShown(!confirmDialogShown);
+    }
     interface SelectProps {
         label: string;
         labelId: string;
@@ -32,12 +38,16 @@ export default function Form() {
             id="demo-simple-select"
             value={age}
             label="Age"
-            onChange={event=>onChange(event.target.value as number)}
+            onChange={event => onChange(event.target.value as number)}
         >
             <MenuItem value={10}>Ten</MenuItem>
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
         </StyledSelect>
+        <Button onClick={() => confirmClear()}>Clear Form</Button>
+        <DialogConfirm visible={confirmDialogShown} title="Clear Form" message="Are you sure you want to clear the form?" onClose={(status) => { }} />
     </FormControl>)
 }
+
+
 
