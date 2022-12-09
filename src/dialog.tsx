@@ -5,7 +5,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 
 
@@ -19,13 +18,14 @@ const DialogConfirm: FC<DialogProps> = (params) => {
     const { visible, title, message, onClose } = { ...params };
 
     const theme = useTheme();
-    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     return <Dialog
-        fullScreen={fullScreen}
+        maxWidth="sm"
+        fullWidth={true}
+        aria-labelledby="check-delete-dialog-title"
+        className="futura"
         open={visible}
-        onClose={()=>onClose(false)}
-        aria-labelledby="responsive-dialog-title"
+        onClose={() => onClose(false)}
     >
         <DialogTitle id="responsive-dialog-title">
             {title}
@@ -37,10 +37,10 @@ const DialogConfirm: FC<DialogProps> = (params) => {
         </DialogContent>
         <DialogActions>
             <Button autoFocus onClick={() => onClose(false)}>
-                Cansel
+                No
             </Button>
             <Button onClick={() => onClose(true)} autoFocus>
-                Ok
+                Yes
             </Button>
         </DialogActions>
     </Dialog>

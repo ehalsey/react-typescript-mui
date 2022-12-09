@@ -1,12 +1,14 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import { FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
+import { FormControl, InputLabel, Select, MenuItem, Button, useTheme } from '@mui/material';
 import DialogConfirm from './dialog'
 
 export default function Form() {
 
+    const theme = useTheme();
+
     const [age, setAge] = React.useState(20);
-    const [confirmDialogShown, setConfirmDialogShown] = React.useState(false);
+    const [confirmDeleteShown, setConfirmDeleteShown] = React.useState(false);
 
     const onChange = (value: number) => {
         console.log(value);
@@ -14,12 +16,12 @@ export default function Form() {
     }
 
     const handleClear = () => {
-        setConfirmDialogShown(!confirmDialogShown);
+        setConfirmDeleteShown(!confirmDeleteShown);
     }
 
     const handleConfirmDialogClose = (status: boolean) => {
         console.log(status);
-        setConfirmDialogShown(false);
+        setConfirmDeleteShown(false);
     }
     interface SelectProps {
         label: string;
@@ -49,8 +51,8 @@ export default function Form() {
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
         </StyledSelect>
-        <Button onClick={handleClear}>Clear Form</Button>
-        <DialogConfirm visible={confirmDialogShown} title="Clear Form" message="Are you sure you want to clear the form?" onClose={(status) => {handleConfirmDialogClose(status) }} />
+        <Button onClick={handleClear}>Delete Template</Button>
+        <DialogConfirm visible={confirmDeleteShown} title="Delete template" message="Are you sure you want to delete the template?" onClose={(status) => {handleConfirmDialogClose(status) }} />
     </FormControl>)
 }
 
