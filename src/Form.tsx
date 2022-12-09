@@ -33,7 +33,6 @@ export default function Form() {
     const StyledSelect = styled(Select)<SelectProps>(({ labelId, id, value, label }) => ({
         height: '36px',
         border: '1px solid rgba(34, 27, 78, 0.5)',
-        color: '#000000',
         borderRadius: '8px',
         paddingLeft: '16px',
     }));
